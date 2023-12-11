@@ -1,0 +1,311 @@
+<section class="contenedor_create_applicant">
+    <app-header></app-header>
+   
+             <h2 style="margin-bottom: 4vh; color: #003D66; font-weight: 600;"> Crea tu perfil en work for world</h2>
+
+      <form action="" class="form_applicant" autocomplete="off" [formGroup]=" createApplicant" (ngSubmit)="  addApplicant()">
+ 
+    <section class="contain-form" *ngIf='contain_part1'>
+        <h4 class="title_style">Informacion Personal</h4>
+
+                <span>Todos los campos en el formulario son obligatorios</span>
+
+        <div class="contain_row">
+                <div class="contain-formint">
+
+                    <label for="name">*Nombres</label>
+                        <input type="text"  id="name" formControlName="name" required >
+                
+                </div>
+
+                <div class="contain-formint">    
+
+                    <label for="lastname">*Apellidos</label>
+                    <input type="text" id="lastname" formControlName="lastname" required >
+
+                </div>  
+
+        </div>
+        
+        <div class="contain_row">
+                <div class="contain-formint">
+                    <span>*Tipo de identificación</span>
+
+                       
+                        <select name="" id="changetypea" formControlName="typeIdent" >
+                            <option *ngFor="let n of optionsDoc">{{n}}</option>
+                        </select>
+                </div>
+
+                <div class="contain-formint">
+                    <label for="id_applicant">*Número de identificación</label>
+                    <input type="number" id="id_applicant" formControlName="numberIdent" required >
+                 </div>
+
+        </div>
+
+    
+            
+            <div class="contain_row">
+                <div class="contain-formint">
+                    <label for="email_applicant">*Correo Electronico</label>
+                    <input type="email" id="email_applicant" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$" formControlName="email" required >
+                </div>
+                <div class="contain-formint">
+                    <label for="number-applicant">*Telefono de contacto</label>
+                    <input type="number" id="number-applicant" formControlName="phoneContact" required >
+                </div>
+            </div>
+
+            
+            <div class="contain_row">
+                <div class="contain-formint">
+                       <label for="country_applicant">*Pais de residencia</label>
+                       <input type="text" id="country_applicant" formControlName="country" required>
+                </div>
+                <div class="contain-formint">
+                    <label for="country_applicant">*Ciudad de residencia</label>
+                    <input type="text" id="country_applicant" formControlName="city" required >
+              </div>
+
+            
+            </div>
+            <div class="contain_row2">
+                <div>
+                <span id="titledsa" >Fecha de Nacimiento</span>
+                </div>
+                <div>
+                     <input type="number" min="1" step="1" class="tools" id="date_applicant" placeholder="DD" formControlName="numBirth" >
+
+                        <select name="" id="" class="tools" formControlName="monthBirth">
+                              <option  *ngFor="let na of optionMonth">{{na}}</option>
+                       </select>
+
+                     <input type="number" class="tools" placeholder="AAAA" formControlName="yearBirth">
+                </div>
+            </div>
+            
+            <div>
+               <button type="button" class="btn_next" (click)="change1()">Siguente<img style="height: 3vh; padding-left:'1vw';" src="./../../../assets/images/arrow.png" alt=""></button>
+            </div>
+    </section>
+
+        <section class="informationProfile" *ngIf='contain_part2'>
+
+            <button type="button" class="btn-return"  (click)="return1()" > <img class="return" src="./../../../assets/images/return.png" alt=""></button>
+
+                <h4 class="title_style">Perfil Profesional</h4>
+
+            <div class="contain_row" style="margin-top:4vh">    
+                <span>Descripción breve de tu perfil profesional</span>
+                <textarea name="" id="" cols="30" rows="5" placeholder=" Ejemplo: Soy un Fotografo profesional apasionado por el paisajismo." formControlName="aboutMe">
+
+                </textarea>
+                
+            </div>    
+            <div class="travel_set"> 
+                <span>Disponibilidad para viajar</span>
+                <select name="" id="" formControlName="travel" class="tools">
+                    <option value="Tengo disponibilidad para viajar">Si</option>
+                    <option value="no cuento con disponibilidad para viajar">No</option>
+                </select>
+            </div>
+                <!-- <span>Idiomas</span> -->
+    
+
+    
+            <div>
+
+                  <div  class="container-skill">
+                        <div>
+                         <span style="margin-bottom: 1vh;" class="title_style">*Mis conocimientos </span><span style="color: #555555; font-size: 0.8em; font-style: italic;">En este campo debes seleccionar 5 elementos</span>
+                        </div> 
+                         <!-- <input type="text" list="knowledge1" [(ngModel)]='selectedKnowledge' placeholder=" Selecciona tus conocimientos" formControlName="knowledge">
+                         <datalist name="" id="knowledge1"  >
+                            <option  *ngFor="let thought of optionThought" >{{thought}}</option>
+                        </datalist>
+                        {{selectedKnowledge}} -->
+                    <ng-select
+                       [items]="optionThought"
+                       bindLabel="name"
+                       placeholder="Selecciona tus conocimientos"
+                       appendTo="body"
+                       [multiple]="true"
+                       [(ngModel)]="selectedKnowledge"
+                       formControlName="knowledge">
+                     </ng-select>
+
+                  </div>
+               
+                <div class="container-skill">
+                    <!-- <span style="margin-bottom: 1vh;" class="title_style">Habilidades</span>
+                        <input multiple="multiple" type="text" list="yourSkills" placeholder=" Selecciona tus habilidades"  [(ngModel)]='selected' [value]=selected formControlName="skill" >
+                        <datalist   name="" id="yourSkills">
+                            <option  *ngFor="let skill of optionSkill">{{skill}}</option>
+                        </datalist>
+                    
+                       {{selected}} -->
+                 <div>
+                <span style="margin-bottom: 1vh;" class="title_style">*Habilidades </span><span style="color: #555555; font-size: 0.8em; font-style: italic;">En este campo debes seleccionar 5 elementos</span>
+                   </div>
+                    <ng-select
+                       [items]="optionSkill"
+                       bindLabel="name"
+                       placeholder="Selecciona tus habilidades"
+                       appendTo="body"
+                       [multiple]="true"
+                       [(ngModel)]="selected"
+                       formControlName="skill">
+                     </ng-select>
+                       
+
+
+                </div>
+    
+            </div>
+            <button type="button" class="btn_next" (click)="change2()">Siguiente<img style="height: 3vh; padding-left:'1vw';" src="./../../../assets/images/arrow.png" alt=""></button>
+            
+        </section>   
+
+
+        <section class="informationAcademy" *ngIf='contain_part3'>
+            <button type="button" class="btn-return"> <img class="return" src="./../../../assets/images/return.png" alt="" (click)="return2()"></button>
+
+            <div class="contain_row">
+              <h4 class="title_style" style="margin-bottom: 3vh;">Formacion academica</h4>
+            </div>
+    <div class="contain-level">   
+            <span>Cual es tu ultimo nivel de Estudios Terminado</span>
+
+            <select name="" id="" style="margin-left: 2vw;" formControlName="levelStudy">
+                <option  *ngFor="let s of optionStudyLevel">{{s}}</option>
+            </select>
+    </div>   
+    <div class="contain_row">
+      
+            <label for="name_prof">Titulo otorgado</label>
+            <input type="text" id="name_prof" formControlName="titleStudy">
+       
+
+            <span id="sta_personal">Estado</span>
+            <select name="" id="" formControlName="study">
+                <option *ngFor="let st of optionState">{{st}}</option>
+            </select>
+        
+    </div>   
+
+        
+        <div class="contain_row" style="margin: 3vh 0;">
+            <h4 class="title_style" >Experiencia Laboral</h4>
+        </div>
+        <div class="contain_row">
+            
+        <div class="contain-formint">
+            <span>Años de Experiencia laboral</span>
+            <select name="" id="" formControlName="yearJob">
+                <option *ngFor="let t of optionTime">{{t}}</option>
+            </select>
+        </div>
+        <div class="contain-formint">
+             <label for="loadTitle">Nombre del cargo</label>
+                <input type="text" id="loadTitle" formControlName="nameJob">
+            </div>  
+        </div>
+
+        <div class="contain_row">
+            <div class="contain-formint">
+                <label for="company">Empresa</label>
+                    <input type="text" id="company" formControlName="nameCompany">
+            </div>
+            <div class="contain-formint">
+                <span>Sector Economico de la empresa</span>
+                <select name="" id="" formControlName="sectorCompany">
+                    <option  *ngFor="let sec of optionCompany">{{sec}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="contain_row2">
+            <div>
+                <span>Fecha Inicio</span>
+            </div>
+            <div>
+                    <select class="tools" name="" id="" formControlName="companyMonth">
+                        <option  *ngFor="let m of optionMonth">{{m}}</option>
+                    </select>
+                 <input type="text" class="tools" placeholder="AAAA"  formControlName="companyYear">
+            </div>
+        </div>
+                  
+              <div class="containJob">
+                   <input type="checkbox" id="job" style="margin-right: 0.7vw;" value="Trabajo Actualmente en esta compañia" formControlName="companyActual" > 
+                   <label for="job">Trabajo Actualmente en esta compañia</label>
+               </div>
+
+                <div class="contain_row2">
+                    <div>
+                     <span>Fecha Finalizacion</span>
+                    </div>
+                    <div>
+                    <select class="tools" name="" id="" formControlName="finalMonth">
+                        <option  *ngFor="let f of optionMonth">{{f}}</option>
+                    </select>
+
+                    <input class="tools" type="text" placeholder="AAAA" formControlName="finalYear">
+                </div>
+            </div>
+            <div class="contain_grade">
+                <span>Tus logros</span>
+                <textarea name="" id="" cols="30" rows="5" formControlName="attainment"></textarea>
+             </div>
+            
+
+        </section>    
+
+             
+
+        
+            <div class="st_term" *ngIf='contain_term'>     
+                    <input type="checkbox" id="term" style="margin-right: 0.7vw;"> 
+                    <label for="term">He leído y autorizo los Términos y condiciones de este portal.</label>
+            </div>    
+            
+            <div class="st_term"  *ngIf='contain_term'>     
+                <input type="checkbox" style="margin-right: 0.7vw;" id="termTwo"> 
+                <label for="termTwo" >Política de privacidad y protección de datos</label>
+            </div>  
+            <div class="contain_alert">
+                 <span  *ngIf="submitted && createApplicant.invalid" >Aun hay campos requeridos incompletos y/o pendientes</span>
+            </div>
+
+                    <button class="btn_next" *ngIf='contain_term'>Crear cuenta</button>
+            </form>
+              
+                    
+                <!-- <button (click)="getAllAvatars()">aquiiiii estoy</button>
+                <button (click)="getAvatar()">Avatar</button> -->
+        
+
+        <div class="progress" class="bar">
+              <div class="progress" style="height: 2px; margin-bottom: 1vh;">
+                <div class="progress-bar progress-bar-sucess" role="progressbar" style="width: 34%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 33%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" *ngIf="bar1"></div>
+                <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" *ngIf="bar2"></div>
+            </div>
+              <div class="progress" style="height: 7px;">
+                <div class="progress-bar" role="progressbar" style="width: 34%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 34%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" *ngIf="bar1"></div>
+                <div class="progress-bar" role="progressbar" style="width: 34%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" *ngIf="bar2"></div>
+            </div>
+        </div>    
+
+        <div class="modal-dialog modal-dialog-centered" class="modal_exit" *ngIf="modal">
+            <div class="dialog">
+                <h3 style="font-weight:700;" class="title_style">Felicidades !!!</h3> <br>
+                <p>Tu perfil ha sido creado con exito </p>
+                <button class="btn_next" routerLink="/profile"> Ir al perfil</button>
+            </div>
+          </div>
+
+
+</section>
