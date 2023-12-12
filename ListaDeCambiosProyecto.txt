@@ -1,0 +1,5 @@
+Lista de cosas por modificar
+
+-Modificacion del CSS
+-Crear un iniciar sesion que almacene las cuentas 
+-Una opcion de mostrar las cuentas enlazadas
