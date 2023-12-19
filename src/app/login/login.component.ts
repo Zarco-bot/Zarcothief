@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit{
     }
   }
 
+
+  redirigirAListaCuentas(){
+    this.router.navigate(['/listas']);
+  }
+
   ngOnInit(): void {
     //contraseña
 
