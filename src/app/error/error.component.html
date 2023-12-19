@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión</title>
+  <title>Error de Sesión</title>
   <style>
     body {
       margin: 0;
@@ -11,7 +11,7 @@
       box-sizing: border-box;
     }
 
-    .container_work {  /* Contenedor principal de la ventana */
+    .container_work {
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -25,7 +25,7 @@
       background-size: 100% 100%;
     }
 
-    .init {/* primera columna de la interfaz */
+    .init {
       width: 100vw;
       height: 60vh;
       display: flex;
@@ -34,13 +34,12 @@
       justify-items: center;
       opacity: 0.5;
       transform: rotate(10deg);
-
     }
 
     .welcome {
       z-index: 50;
-      width: 400px; /* Ancho del contenedor */
-      height: auto; /* Altura que se adapta a mi contenido */
+      width: 400px;
+      height: auto;
       position: absolute;
       background-color: #00012254;
       justify-content: center;
@@ -49,24 +48,22 @@
       flex-direction: column;
       color: #ffffff;
       border-radius: 20px;
-      padding: 20px; /* Añadido para dar espacio al contenido */
-
+      padding: 20px;
     }
 
     button {
-      width: 100%; /* Ancho al 100% del contenedor padre */
+      width: 100%;
       padding: 10px;
       border: none;
       border-radius: 10px;
       background: #006cb4;
       color: #ffffff;
       font-size: 1.5em;
-      /* Boton */
     }
 
     .contain-login {
       width: 100%;
-      max-width: 400px; /*Formulario tamaño */
+      max-width: 400px;
       text-align: center;
     }
 
@@ -90,6 +87,11 @@
       color: #ffffff;
     }
 
+    .error-message {
+      margin-top: 20px;
+      color: #ffffff; /* Cambiado a blanco */
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
@@ -102,43 +104,15 @@
 
   <div class="welcome">
     <div class="contain-login">
-      <h1>Servicio de inicio de sesión</h1>
+      <p class="error-message">Error bro, volve a atras :)</p>
 
-      <form (submit)="onSubmit(username)">
-        <div class="form-group">
-          <label for="username">Usuario: </label>
-          <input type="text" id="username" [(ngModel)]="username"
-                 name="username" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password: </label>
-          <input type="password" id="password" [(ngModel)]="password"
-                 name="password" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-secondary">Iniciar Sesi&oacute;n</button>
+      <form (submit)="onSubmit()">
+        <button type="submit" class="btn btn-secondary">Volver a iniciar sesión</button>
       </form>
-
-      <p>¿No tienes una cuenta? <a href="/register">Regístrate</a></p>
     </div>
   </div>
 
 </section>
 
-
-
-
-<button onclick="redirigirAListaCuentas()">Listar cuentas</button>
-
-
-<script>
-  function redirigirAListaCuentas() {
-
-    window.location.href = '/listas';
-  }
-</script>
-
-
 </body>
 </html>
-

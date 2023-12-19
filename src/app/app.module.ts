@@ -18,6 +18,8 @@ import { HeaderComponent } from './components/header/header.component'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from "@ng-select/ng-select";
 import { LoginComponent } from './login/login.component';
+import { ErrorComponent } from './error/error.component';
+import { ListasComponent } from './listas/listas.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { LoginComponent } from './login/login.component';
     ApplicantProfileComponent,
     AvatarComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorComponent,
+    ListasComponent
   ],
   imports: [
     BrowserModule,

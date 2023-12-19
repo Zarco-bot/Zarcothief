@@ -26,9 +26,10 @@ export class LoginComponent implements OnInit{
     console.log(encrypt(this.password))
     // @ts-ignore
     if(usuarioOpt.length>0 && (usuarioOpt.at(0).password) === encrypt(this.password)) {  //aseguramos de que existan datos para poder buscar supassword
-      this.router.navigate(['/home']);
+      this.router.navigate(['/register']);
     } else {
-      console.log("error jajaja")
+      console.log("error")
+      this.router.navigate(['/error']);
     }
   }
 

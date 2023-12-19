@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Cuentas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      background-color: #006cb4; /* Fondo azul claro */
+      color: #000000; /* Texto en negro */
+      min-height: 100vh; /* Asegura que el fondo azul abarque toda la altura de la ventana */
+    }
+
+    .list-container {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      min-height: 100vh; /* Asegura que el fondo azul abarque toda la altura de la ventana */
+    }
+
+    .account {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h4 {
+      margin: 0;
+    }
+
+    hr {
+      border: 1px solid #ddd;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="list-container">
+  <h1>Listado de Cuentas</h1>
+
+  <div *ngFor="let cuenta of validationUsersList" class="account">
+    <p><strong>Nombre:</strong> <span>{{ cuenta.usuarios }}</span></p>
+    <p><strong>Contraseña:</strong> <span>{{ cuenta.password }}</span></p>
+  </div>
+
+  <hr>
+</div>
+
+</body>
+</html>
