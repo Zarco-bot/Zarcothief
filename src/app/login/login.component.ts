@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
     // @ts-ignore
     let usuarioOpt = this.validationUsersList.filter(
       item => item.usuarios == usuarioRequest);
-    console.log(encrypt(this.password))
+    console.log("LA ENCRIPTADA", encrypt(this.password))
     // @ts-ignore
     if(usuarioOpt.length>0 && (usuarioOpt.at(0).password) === encrypt(this.password)) {  //aseguramos de que existan datos para poder buscar supassword
       this.router.navigate(['/register']);
